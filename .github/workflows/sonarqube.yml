@@ -27,7 +27,5 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-		    LC_ALL: "ru_RU.UTF-8"
-	    args:
-        -Dsonar.projectKey=
+	LC_ALL: "ru_RU.UTF-8"
 		
