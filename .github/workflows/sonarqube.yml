@@ -11,7 +11,8 @@ on:
       - main
       - master
       - develop
-      - 'releases/**'	
+      - 'releases/**'
+    types: [opened, synchronize, reopened]  
 
 name: Main Workflow
 jobs:
@@ -22,9 +23,11 @@ jobs:
       with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         path: ~/.m2
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           
     - name: SonarQube Scan for Analysis
       uses: sonarsource/sonarqube-scan-action@master
       env:
-        SONAR_TOKEN: ${{ env.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ env.SONAR_HOST_URL }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
